@@ -1,16 +1,21 @@
 package data
 
-import data.model.*
+import data.model.Employee
+import data.model.Services
+import data.model.Shelters
+import data.model.Pets
+import data.model.Person
+import data.model.Constants.fileNamePerson
+import data.model.Constants.fileNameEmployee
+import data.model.Constants.fileNamePets
+import data.model.Constants.fileNameServices
+import data.model.Constants.fileNameShelters
 import java.nio.file.Files
 import java.nio.file.Paths
 
 
-class DataSourceImpl: DataSource {
-    private val fileNameEmployee = "Employee.csv"
-    private val fileNamePerson = "Person.csv"
-    private val fileNamePets = "Pets.csv"
-    private val fileNameServices = "Services.csv"
-    private val fileNameShelters = "Shelters.csv"
+class DataSourceImpl() : DataSource {
+
     override fun readCsvFileEmployee(): List<String> {
         val bufferedReader = Files.newBufferedReader(Paths.get(fileNameEmployee))
         val result = mutableListOf<String>()
@@ -24,8 +29,8 @@ class DataSourceImpl: DataSource {
 
 
     override fun getEmployees(): List<Employee> = readCsvFileEmployee().map {  employee ->
-        val (name, age, id) = employee.split(";")
-        return@map Employee(name, age.toInt(), id.toInt())
+        val (name, age, id, rt, servEmp) = employee.split(";")
+        return@map Employee(name, age.toInt(), id.toInt(),  rt.toInt(), servEmp.lines())
     }
 
 
@@ -41,8 +46,8 @@ class DataSourceImpl: DataSource {
     }
 
     override fun getPerson(): List<Person> = readCsvFilePerson().map { person ->
-        val (name, age, id) = person.split(";")
-        return@map Person(name, age.toInt(), id.toInt())
+        val (name, age, id, totalPrice) = person.split(";")
+        return@map Person(name, age.toInt(), id.toInt(), totalPrice.toInt())
     }
 
     override fun readCsvFilePets(): List<String> {
@@ -58,7 +63,8 @@ class DataSourceImpl: DataSource {
 
     override fun getPets(): List<Pets> = readCsvFilePets().map { pets ->
         val (name, kind, breed, age, id) = pets.split(";")
-        return@map Pets(name, kind, breed, age.toInt(), id.toInt())
+        val (price) = pets.split(";")
+        return@map Pets(name, kind, breed, age.toInt(), id.toInt(), price.toInt())
     }
 
     override fun readCsvFileServices(): List<String> {
@@ -73,8 +79,8 @@ class DataSourceImpl: DataSource {
     }
 
     override fun getServices(): List<Services> = readCsvFileServices().map { services ->
-        val (name, id) = services.split(";")
-        return@map Services(name, id.toInt())
+        val (name, id, idEmp, price) = services.split(";")
+        return@map Services(name, id.toInt(), idEmp.toInt(), price.toInt())
     }
 
     override fun readCsvFileShelters(): List<String> {
@@ -88,8 +94,9 @@ class DataSourceImpl: DataSource {
         return result
     }
 
-    override fun getShelters(): List<Shelters> = readCsvFileShelters().map { shelters ->
-        val (name, id) = shelters.split(";")
-        return@map Shelters(name, id.toInt())
-    }
+        override fun getShelters(): List<Shelters> = readCsvFileShelters().map { shelters ->
+            val (name, id, petKind) = shelters.split(";")
+            return@map Shelters(name, id.toInt(), petKind.split(","))
+        }
+
 }
