@@ -10,4 +10,5 @@ fun main(args: Array<String>) {
     adapter.printCostOfServices()
     adapter.printCostOfServicesEmp()
     adapter.printFindingShelters()
+
 }
