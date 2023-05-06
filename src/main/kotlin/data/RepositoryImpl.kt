@@ -7,7 +7,11 @@ import data.model.Shelters
 import domain.Repository
 
 class RepositoryImpl(private val dataSource: DataSource): Repository {
-    override fun getBestEmployee(): List<Employee> {
+    override fun getBestEmployee(): Employee {
+        return dataSource.getEmployees().first { it.rating == 5 }
+    }
+
+    override fun getAllEmployees(): List<Employee> {
         return dataSource.getEmployees()
     }
 

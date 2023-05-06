@@ -24,8 +24,8 @@ class DataSourceImpl: DataSource {
 
 
     override fun getEmployees(): List<Employee> = readCsvFileEmployee().map {  employee ->
-        val (name, age, id) = employee.split(";")
-        return@map Employee(name, age.toInt(), id.toInt())
+        val (name, age, id, rating) = employee.split(";")
+        return@map Employee(name, age.toInt(), id.toInt(), rating.toInt())
     }
 
 

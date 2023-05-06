@@ -6,7 +6,9 @@ import data.model.Services
 import data.model.Shelters
 
 interface UseCase {
-    fun getBestEmployee(): List<Employee>
+    fun getBestEmployee(): Employee
+
+    fun getAllEmp(): List<Employee>
 
     fun getBestPerson(): List<Person>
 

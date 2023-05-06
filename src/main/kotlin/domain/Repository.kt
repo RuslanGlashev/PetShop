@@ -6,7 +6,9 @@ import data.model.Services
 import data.model.Shelters
 
 interface Repository {
-    fun getBestEmployee(): List<Employee>
+    fun getBestEmployee(): Employee
+
+    fun getAllEmployees(): List<Employee>
 
     fun getBestPerson(): List<Person>
 

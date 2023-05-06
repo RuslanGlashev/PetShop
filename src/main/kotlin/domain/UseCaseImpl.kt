@@ -6,8 +6,12 @@ import data.model.Services
 import data.model.Shelters
 
 class UseCaseImpl(private val repository: Repository): UseCase {
-    override fun getBestEmployee(): List<Employee> {
+    override fun getBestEmployee(): Employee {
         return repository.getBestEmployee()
+    }
+
+    override fun getAllEmp(): List<Employee> {
+        return repository.getAllEmployees()
     }
 
     override fun getBestPerson(): List<Person> {
