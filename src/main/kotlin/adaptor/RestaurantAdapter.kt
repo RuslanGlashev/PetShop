@@ -4,33 +4,33 @@ import domain.UseCase
 
 class RestaurantAdapter(private val useCase: UseCase) {
     fun printEmployees() {
-        for (employee in useCase.getBestEmployee()) {
-            println(employee)
-        }
+        println("Лучший работник: ${useCase.getBestEmployee()}")
     }
 
     fun printPerson() {
-        for (person in useCase.getBestPerson()) {
+        println("Вип гости:")
+        for (person in useCase.getVipPerson()) {
             println(person)
         }
     }
 
     fun printCostOfServices() {
-        for (services in useCase.getCostOfServices()) {
-            println(services)
-        }
+        println("Сумма всех Услуг")
+        println(useCase.getCostOfServices())
     }
 
-    fun printCostOfServicesEmp() {
-        for (services in useCase.getCostOfServicesEmp()) {
-            println(services)
-        }
+    fun printFindOfServicesEmp() {
+        println("Введите название Услуги")
+        val name = readLine().toString()
+        println(useCase.getFindOfServicesEmp(name))
+        println("<>")
     }
 
     fun printFindingShelters() {
-        for (shelters in useCase.getFindingShelters()) {
-            println(shelters)
-        }
+        println("ВВедите пароду")
+        val kind = readLine().toString()
+        println(useCase.getFindingShelters(kind))
+        println("<>")
     }
 }
 

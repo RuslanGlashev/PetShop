@@ -2,17 +2,16 @@ package domain
 
 import data.model.Employee
 import data.model.Person
-import data.model.Services
 import data.model.Shelters
 
 interface UseCase {
-    fun getBestEmployee(): List<Employee>
+    fun getBestEmployee(): Employee
 
-    fun getBestPerson(): List<Person>
+    fun getVipPerson(): List<Person>
 
-    fun getCostOfServices(): List<Services>
+    fun getCostOfServices(): Int
 
-    fun getCostOfServicesEmp(): List<Services>
+    fun getFindOfServicesEmp(name :String): List<Employee>
 
-    fun getFindingShelters(): List<Shelters>
+    fun getFindingShelters(kind :String): List<Shelters>
 }

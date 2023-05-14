@@ -8,7 +8,6 @@ fun main(args: Array<String>) {
     adapter.printEmployees()
     adapter.printPerson()
     adapter.printCostOfServices()
-    adapter.printCostOfServicesEmp()
+    adapter.printFindOfServicesEmp()
     adapter.printFindingShelters()
-
 }

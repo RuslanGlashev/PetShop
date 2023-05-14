@@ -1,8 +1,14 @@
 package data
 
-import data.model.*
+import data.model.Employee
+import data.model.Services
+import data.model.Shelters
+import data.model.Pets
+import data.model.Person
+
 
 interface DataSource {
+
     fun readCsvFileEmployee(): List<String>
 
     fun getEmployees(): List<Employee>

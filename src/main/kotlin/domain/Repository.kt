@@ -8,11 +8,11 @@ import data.model.Shelters
 interface Repository {
     fun getBestEmployee(): List<Employee>
 
-    fun getBestPerson(): List<Person>
+    fun getVipPerson(): List<Person>
 
     fun getCostOfServices(): List<Services>
 
-    fun getCostOfServicesEmp(): List<Services>
+    fun getFindOfServicesEmp(): List<Employee>
 
     fun getFindingShelters(): List<Shelters>
 }
